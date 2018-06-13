@@ -27,7 +27,7 @@ $ aws ec2 create-security-group --group-name my-sg --description "My security gr
 }
 ```
 
-To view the initial information for `my-sg`, use the [describe\-security\-groups](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-security-groups.html) command as follows\. Note that you can't reference a security group for EC2\-VPC by name\.
+To view the initial information for `my-sg`, use the [describe\-security\-groups](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-security-groups.html) command as follows\. 
 
 ```
 $ aws ec2 describe-security-groups --group-ids sg-903004f8
@@ -55,6 +55,34 @@ $ aws ec2 describe-security-groups --group-ids sg-903004f8
     ]
 }
 ```
+Or by using a group name.
+```
+$ aws ec2 describe-security-groups --group-names my-sg
+{
+    "SecurityGroups": [
+        {
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "Description": "My security group"
+            "IpPermissions": [],
+            "GroupName": "my-sg",
+            "VpcId": "vpc-1a2b3c4d",
+            "OwnerId": "123456789012",
+            "GroupId": "sg-903004f8"
+        }
+    ]
+}
+```
+
 
 ### EC2\-Classic<a name="sg-ec2-classic"></a>
 
